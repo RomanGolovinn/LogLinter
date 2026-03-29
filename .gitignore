@@ -1,0 +1,4 @@
+loglinter
+*.exe
+.idea/
+.vscode/
