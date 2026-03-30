@@ -1,4 +1,4 @@
-loglinter
+/loglinter
 *.exe
 .idea/
 .vscode/
