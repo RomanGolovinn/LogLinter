@@ -7,5 +7,6 @@ func GetAllRules() []Rule {
 		CheckLowercase,
 		CheckEnglish,
 		CheckSymbols,
+		CheckSensitive,
 	}
 }
