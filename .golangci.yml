@@ -1,0 +1,11 @@
+linters-settings:
+  custom:
+    loglinter:
+      path: plugin/loglinter.so
+      description: "Custom linter for enforcing strict logging rules"
+      original-url: "github.com/RomanGolovinn/loglinter"
+
+linters:
+  disable-all: true
+  enable:
+    - loglinter
