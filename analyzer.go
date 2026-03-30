@@ -94,10 +94,12 @@ func extractString(expr ast.Expr) (string, bool) {
 		}
 	case *ast.BinaryExpr:
 		if e.Op == token.ADD {
-			if leftStr, ok := extractString(e.X); ok {
-				return leftStr, true
-			}
+			leftStr, _ := extractString(e.X)
+			rightStr, _ := extractString(e.Y)
+			return leftStr + " " + rightStr, true
 		}
+	case *ast.Ident:
+		return e.Name, true
 	}
 	return "", false
 }
