@@ -29,3 +29,16 @@ go build -o loglinter ./cmd/loglinter/main.go
 
 # Запуск проверки для конкретного файла или директории
 ./loglinter ./...
+
+## Интеграция с golangci-lint (Module Plugin System)
+
+Проект поддерживает современную интеграцию через [Module Plugin System](https://golangci-lint.run/plugins/module-plugins/), появившуюся в `golangci-lint` v1.57+. Это позволяет компилировать линтер напрямую в бинарник `golangci-lint`, избегая проблем с CGO.
+
+**Конфигурация:**
+В корне проекта находится файл `.custom-gcl.yml`, который описывает правила импорта нашего плагина. Также обновлен `.golangci.yml` (тип плагина изменен на `module`).
+
+**Инструкция по сборке кастомного линтера:**
+
+1. Запустите сборку `golangci-lint` с интегрированным плагином (рекомендуется использовать ту же версию, что и в `.custom-gcl.yml`, например `v1.61.0`):
+   ```bash
+   go run [github.com/golangci/golangci-lint/cmd/golangci-lint@v1.61.0](https://github.com/golangci/golangci-lint/cmd/golangci-lint@v1.61.0) custom

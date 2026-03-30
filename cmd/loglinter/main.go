@@ -6,7 +6,7 @@ package main
 import (
 	"golang.org/x/tools/go/analysis/singlechecker"
 
-	"github.com/RomanGolovinn/loglinter"
+	loglinter "github.com/RomanGolovinn/loglinter/analyzer"
 )
 
 func main() {

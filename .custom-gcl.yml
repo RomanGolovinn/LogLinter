@@ -1,0 +1,5 @@
+version: v1.61.0
+plugins:
+  - module: 'github.com/RomanGolovinn/loglinter'
+    import: 'github.com/RomanGolovinn/loglinter/plugin'
+    path: .

@@ -2,7 +2,7 @@ linters-settings:
   custom:
     loglinter:
       path: plugin/loglinter.so
-      description: "Custom linter for enforcing strict logging rules"
+      description: "Custom linter for enforcing log message rules"
       original-url: "github.com/RomanGolovinn/loglinter"
 
 linters:

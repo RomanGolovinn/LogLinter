@@ -1,4 +1,4 @@
-package loglinter
+package analyzer
 
 import (
 	"go/ast"
