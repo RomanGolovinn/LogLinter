@@ -1,7 +1,7 @@
 # LogLinter
 
 Custom Go linter and `golangci-lint` plugin for static analysis of log messages (`log`, `log/slog`). 
-Разработано в рамках тестового задания на позицию Junior Go Developer.
+Разработано в рамках тестового задания на позицию Intern Go Developer.
 
 ## Описание
 
