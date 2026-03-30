@@ -74,16 +74,32 @@ func checkNode(n ast.Node, pass *analysis.Pass, activeRules []rules.Rule) {
 		return
 	}
 
-	lit, ok := call.Args[0].(*ast.BasicLit)
-	if !ok || lit.Kind != token.STRING {
+	msg, ok := extractString(call.Args[0])
+	if !ok {
 		return
 	}
 
-	msg := strings.Trim(lit.Value, `"`)
-
 	for _, rule := range activeRules {
 		if errMessage := rule(msg); errMessage != "" {
-			pass.Reportf(lit.Pos(), errMessage)
+			pass.Reportf(call.Args[0].Pos(), "%s", errMessage)
 		}
 	}
+}
+
+func extractString(expr ast.Expr) (string, bool) {
+	switch e := expr.(type) {
+	case *ast.BasicLit:
+		if e.Kind == token.STRING {
+			return strings.Trim(e.Value, `"`), true
+		}
+	case *ast.BinaryExpr:
+		if e.Op == token.ADD {
+			leftStr, _ := extractString(e.X)
+			rightStr, _ := extractString(e.Y)
+			return leftStr + " " + rightStr, true
+		}
+	case *ast.Ident:
+		return e.Name, true
+	}
+	return "", false
 }
